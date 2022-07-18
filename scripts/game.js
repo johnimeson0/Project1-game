@@ -62,12 +62,13 @@ class Game {
             // let maxGap = 600;
             
             // let gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap); 
+            let possible = [550, 700, 850]
 
-            this.obstacles.push(new Component(75, height, 'purple', 500, 0, this.ctx));
+            this.obstacles.push(new Component(75, height, 'purple', possible[Math.floor(Math.random() * possible.length)], 0, this.ctx));
 
-            this.obstacles.push(new Component(75, height, 'aquamarine', 800, 0, this.ctx));
+            /* this.obstacles.push(new Component(75, height, 'aquamarine', 800, 0, this.ctx)); */
 
-            this.obstacles.push(new Component(75, height, 'aquamarine', 650, 0, this.ctx));
+            this.obstacles.push(new Component(75, height, 'aquamarine', possible[Math.floor(Math.random() * possible.length)], 0, this.ctx));
 
 
         }

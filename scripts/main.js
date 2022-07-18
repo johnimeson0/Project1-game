@@ -39,12 +39,12 @@ let game;
         case 'ArrowLeft':
             console.log(e.code)
 
-            player.speedX-= 2;
+            player.speedX-= 3;
             break;
         case 'ArrowRight':
             console.log(e.code)
 
-            player.speedX += 2;
+            player.speedX += 3;
             break;
     }
 });  
@@ -53,14 +53,14 @@ let game;
  document.addEventListener('keyup', (e) => {
     console.log('eventListener keyup is working')
     if (player.speedX > 0){
-        player.speedX --
+        player.speedX = 0;
     } else if (player.speedX < 0){
-        player.speedX ++
+        player.speedX = 0;
     } else if (player.speedY > 0){
-        player.speedY --
+        player.speedY -= 1
     } else if (player.speedY < 0){
-        player.speedY ++
-    } else ; 
-    //player.speedX = 0;
+        player.speedY += 1
+    } else ((player.speedX === 0)(player.speedY) === 0); 
+    player.speedX = 0;
     //player.speedY = 0;
 }); 
