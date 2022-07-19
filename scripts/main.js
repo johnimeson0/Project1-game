@@ -7,7 +7,7 @@ const ctx = canvas.getContext('2d');
 const cWidth = canvas.width;
 const cHeight = canvas.height;
 
-const player = new Component(75, 125, 'purple', 650, 645, ctx);
+const player = new Component(75, 125, 'yellow', 650, 645, ctx);
 
 let game;
 
@@ -28,22 +28,22 @@ let game;
     switch(e.code){
         case 'ArrowUp':
             console.log(e.code)
-            player.speedY -= 2;
+            player.speedY -= 1;
             break;
         case 'ArrowDown':
             console.log(e.code)
 
-            player.speedY += 2;
+            player.speedY += 1;
             break;
         case 'ArrowLeft':
             console.log(e.code)
 
-            player.speedX-= 3;
+            player.speedX-= 5;
             break;
         case 'ArrowRight':
             console.log(e.code)
 
-            player.speedX += 3;
+            player.speedX += 5;
             break;
     }
 });  
@@ -52,14 +52,14 @@ let game;
  document.addEventListener('keyup', (e) => {
     console.log('eventListener keyup is working')
     if (player.speedX > 0){
-        player.speedX = 0;
+        player.speedX -= (player.speedX / 2);
     } else if (player.speedX < 0){
-        player.speedX = 0;
-    } else if (player.speedY > 0){
-        player.speedY -= 1
-    } else if (player.speedY < 0){
-        player.speedY += 1
-    } else ((player.speedX === 0)(player.speedY) === 0); 
-    player.speedX = 0;
+        player.speedX += (player.speedX / 2);
+    // } else if (player.speedY > 0){
+    //     player.speedY -= 1
+    // } else if (player.speedY < 0){
+    //     player.speedY += 1
+    } else ((player.speedX === 0)(player.speedY === 0)); 
+     player.speedX = 0;
     //player.speedY = 0;
 }); 

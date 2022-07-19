@@ -51,7 +51,7 @@ class Game {
 
         this.frames += 1;
 
-        if(this.frames % 300 === 0){
+        if(this.frames % 290 === 0){
             let x = this.width;
 
             let minHeight = 125;
@@ -78,39 +78,25 @@ class Game {
 
         }
         for (let i = 0; i < this.copstacles.length; i++){
-            console.log('updateCobstacles is working');
-             this.copstacles[i].y -= 1;
-             this.copstacles[i].drawChar();
-         }
-         if(this.frames % 300 === 0){
-
-         possible = [550, 700, 850]
-
-         this.copstacles.push(new Component(75, height, 'red', possible[Math.floor(Math.random() * possible.length)], 800, this.ctx));
-         this.copstacles.push(new Component(75, height, 'blue', possible[Math.floor(Math.random() * possible.length)], 800, this.ctx));
-         this.copstacles.push(new Component(75, height, 'red', possible[Math.floor(Math.random() * possible.length)], 800, this.ctx));
+           console.log('updateCobstacles is working');
+            this.copstacles[i].y -= 1;
+            this.copstacles[i].drawChar();
         }
-
-    }
+        if(this.frames % 300 === 0){
+    
+        possible = [550, 700, 850]
+    
+        this.copstacles.push(new Component(75, height, 'red', possible[Math.floor(Math.random() * possible.length)], 800, this.ctx));
+        this.copstacles.push(new Component(75, height, 'blue', possible[Math.floor(Math.random() * possible.length)], 800, this.ctx));
+        this.copstacles.push(new Component(75, height, 'red', possible[Math.floor(Math.random() * possible.length)], 800, this.ctx));
+       }
+        
     };
 
-    updateCopstacles() {
-        // console.log('updateObstacles is working')
-         for (let i = 0; i < this.copstacles.length; i++){
-            console.log('updateCobstacles is working');
-             this.copstacles[i].y -= 1;
-             this.copstacles[i].drawChar();
-         }
-         if(this.frames % 300 === 0){
+    // updateCopstacles() {
+    //     // console.log('updateObstacles is working')
 
-         possible = [550, 700, 850]
-
-         this.copstacles.push(new Component(75, height, 'red', possible[Math.floor(Math.random() * possible.length)], 800, this.ctx));
-         this.copstacles.push(new Component(75, height, 'blue', possible[Math.floor(Math.random() * possible.length)], 800, this.ctx));
-         this.copstacles.push(new Component(75, height, 'red', possible[Math.floor(Math.random() * possible.length)], 800, this.ctx));
-        }
-
-    }
+    // }
 
     checkGameOver = () => {
        // console.log('checkGameOver is working')
@@ -121,8 +107,8 @@ class Game {
         if(crashed) {
             this.stop()
             this.ctx.font = '50px comic-sans'
-            this.ctx.fillStyle = 'orange'
-            this.ctx.fillText('Damn you suck lol', 300, 250)
+            this.ctx.fillStyle = `${this.player.color}`
+            this.ctx.fillText('Damn you suck lol', this.player.x, this.player.y)
         }
 
     };
@@ -137,8 +123,8 @@ class Game {
 
      draw(){
         ctx.beginPath();
-        ctx.fillRect(350, 0, 650, 1400)
         ctx.fillStyle = 'black';
+        ctx.fillRect(350, 0, 650, 1400)
         // ctx.clearRect(45, 45, 60, 60)
         // ctx.strokeRect(50, 50, 50, 50)
         ctx.closePath();
@@ -147,9 +133,9 @@ class Game {
     updateGameArea = () => {
        // console.log('updateGameArea is working')
         this.clear();
-        this.draw()
+        this.draw();
         this.updateObstacles();
-        this.updateCopstacles();
+        // this.updateCopstacles();
         this.player.newPosition();
         this.player.drawChar();
         this.checkGameOver();
