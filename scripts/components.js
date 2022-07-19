@@ -38,6 +38,7 @@ class Component{
         return this.y + this.height;
     }
 
+
     crashWith(obstacle){
         //console.log('crashWith is working')
         return !(
@@ -48,4 +49,3 @@ class Component{
         )
     }
 };
-

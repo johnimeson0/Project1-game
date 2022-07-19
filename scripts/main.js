@@ -7,7 +7,6 @@ const ctx = canvas.getContext('2d');
 const cWidth = canvas.width;
 const cHeight = canvas.height;
 
-
 const player = new Component(75, 125, 'purple', 650, 645, ctx);
 
 let game;
