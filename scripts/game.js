@@ -86,24 +86,22 @@ class Game {
         }
         if(this.frames % 3600 === 0){
     
-        let possible = [550, 700, 850]
-    
-        this.copstacles.push(new Component(75, 125, 'red', 550, 800, this.ctx));
-        this.copstacles.push(new Component(75, 125, 'blue', 700, 800, this.ctx));
-        this.copstacles.push(new Component(75, 125, 'red', 850, 800, this.ctx));
-        this.copstacles.push(new Component(75, 125, 'blue', 400, 800, this.ctx));
+        this.copstacles.push(new Component(75, 125, 'red', 550, 800, this.ctx, '../docs/assets/images/player1crop.png' ));
+        this.copstacles.push(new Component(75, 125, 'blue', 700, 800, this.ctx, '../docs/assets/images/player1crop.png'));
+        this.copstacles.push(new Component(75, 125, 'red', 850, 800, this.ctx, '../docs/assets/images/player1crop.png'));
+        this.copstacles.push(new Component(75, 125, 'blue', 400, 800, this.ctx, '../docs/assets/images/player1crop.png'));
        }
-        for (let i = 0; i < this.winningObstacle.length; i++){
-           console.log('winningObstacle is working');
-            this.winningObstacle[i].y -= 1;
-            this.winningObstacle[i].drawChar();
-        }
-        if(this.frames % 3600 === 0){
-        this.copstacles.push(new Component(75, 125, 'red', 550, 800, this.ctx));
-        this.copstacles.push(new Component(75, 125, 'blue', 700, 800, this.ctx));
-        this.copstacles.push(new Component(75, 125, 'red', 850, 800, this.ctx));
-        this.copstacles.push(new Component(75, 125, 'blue', 400, 800, this.ctx));
-       }
+    //     for (let i = 0; i < this.winningObstacle.length; i++){
+    //        console.log('winningObstacle is working');
+    //         this.winningObstacle[i].y -= 1;
+    //         this.winningObstacle[i].drawChar();
+    //     }
+    //     if(this.frames % 3600 === 0){
+    //     this.copstacles.push(new Component(75, 125, 'red', 550, 800, this.ctx));
+    //     this.copstacles.push(new Component(75, 125, 'blue', 700, 800, this.ctx));
+    //     this.copstacles.push(new Component(75, 125, 'red', 850, 800, this.ctx));
+    //     this.copstacles.push(new Component(75, 125, 'blue', 400, 800, this.ctx));
+    //    }
         
     };
 
