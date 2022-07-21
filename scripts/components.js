@@ -1,5 +1,5 @@
 class Component{
-    constructor(width, height, color, x, y, ctx){
+    constructor(width, height, color, x, y, ctx, imgsrc){
         this.width = width;
         this.height = height;
         this.color = color;
@@ -8,6 +8,11 @@ class Component{
         this.ctx = ctx; 
         this.speedX = 0;
         this.speedY = 0;
+        const img = new Image();
+        img.addEventListener('load', ()=>{})
+        img.src = imgsrc;
+        this.img = img;
+
     }
 
     newPosition(){
@@ -18,8 +23,9 @@ class Component{
 
     drawChar(){
         //console.log('drawChar is working')
-        this.ctx.fillStyle = this.color;
-        this.ctx.fillRect(this.x, this.y, this.width, this.height)
+        /* this.ctx.fillStyle = this.color;
+        this.ctx.fillRect(this.x, this.y, this.width, this.height) */
+        this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
     }
 
     left(){

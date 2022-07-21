@@ -8,6 +8,7 @@ class Game {
         this.player = player;
         this.obstacles = [];
         this.copstacles = [];
+        this.winningObstacle = [];
         this.interval = null;
         this.isRunning = false;
     };
@@ -27,6 +28,7 @@ class Game {
         this.player.speedX = 0;
         this.player.speedY = 0;
         this.obstacles = [];
+        this.copstacles = [];
         this.start();
     };
 
@@ -65,33 +67,90 @@ class Game {
             // let maxGap = 600;
             
             // let gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap); 
-            let possible = [400, 550, 700, 850]
+            let possible = [425, 575, 725, 850]
 
-            this.obstacles.push(new Component(75, height, 'purple', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx));
+            this.obstacles.push(new Component(75, height, 'purple', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, '../docs/assets/images/player1crop.png'));
 
-            this.obstacles.push(new Component(75, height, 'red', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx));
+            this.obstacles.push(new Component(75, height, 'red', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, '../docs/assets/images/player1crop.png'));
 
             /* this.obstacles.push(new Component(75, height, 'aquamarine', 800, 0, this.ctx)); */
 
-            this.obstacles.push(new Component(75, height, 'aquamarine', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx));
+            this.obstacles.push(new Component(75, height, 'aquamarine', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, '../docs/assets/images/player1crop.png'));
 
 
         }
         for (let i = 0; i < this.copstacles.length; i++){
-           console.log('updateCobstacles is working');
+           console.log('updateObstacles is working');
             this.copstacles[i].y -= 1;
             this.copstacles[i].drawChar();
         }
-        if(this.frames % 300 === 0){
+        if(this.frames % 3600 === 0){
     
-        possible = [550, 700, 850]
+        let possible = [550, 700, 850]
     
-        this.copstacles.push(new Component(75, height, 'red', possible[Math.floor(Math.random() * possible.length)], 800, this.ctx));
-        this.copstacles.push(new Component(75, height, 'blue', possible[Math.floor(Math.random() * possible.length)], 800, this.ctx));
-        this.copstacles.push(new Component(75, height, 'red', possible[Math.floor(Math.random() * possible.length)], 800, this.ctx));
+        this.copstacles.push(new Component(75, 125, 'red', 550, 800, this.ctx));
+        this.copstacles.push(new Component(75, 125, 'blue', 700, 800, this.ctx));
+        this.copstacles.push(new Component(75, 125, 'red', 850, 800, this.ctx));
+        this.copstacles.push(new Component(75, 125, 'blue', 400, 800, this.ctx));
+       }
+        for (let i = 0; i < this.winningObstacle.length; i++){
+           console.log('winningObstacle is working');
+            this.winningObstacle[i].y -= 1;
+            this.winningObstacle[i].drawChar();
+        }
+        if(this.frames % 3600 === 0){
+        this.copstacles.push(new Component(75, 125, 'red', 550, 800, this.ctx));
+        this.copstacles.push(new Component(75, 125, 'blue', 700, 800, this.ctx));
+        this.copstacles.push(new Component(75, 125, 'red', 850, 800, this.ctx));
+        this.copstacles.push(new Component(75, 125, 'blue', 400, 800, this.ctx));
        }
         
     };
+
+    draw() {
+       
+        this.ctx.fillStyle = '#232526';
+        this.ctx.fillRect(350, 0, 650, 1400)
+        // ctx.clearRect(45, 45, 60, 60)
+        // ctx.strokeRect(50, 50, 50, 50)
+        this.ctx.beginPath();
+        this.ctx.strokeStyle = 'white'
+        this.ctx.lineWidth = 15
+        this.ctx.setLineDash([50, 100]);
+        this.ctx.moveTo(685, this.frames * 7.5);
+        this.ctx.lineTo(685, this.height) 
+        this.ctx.moveTo(685, this.frames * 7.5);
+        this.ctx.lineTo(685, 0); 
+        this.ctx.moveTo(825, this.frames * 7.5);
+        this.ctx.lineTo(825, this.height) 
+        this.ctx.moveTo(825, this.frames * 7.5);
+        this.ctx.lineTo(825, 0); 
+        this.ctx.moveTo(545, this.frames * 7.5);
+        this.ctx.lineTo(545, this.height) 
+        this.ctx.moveTo(545, this.frames * 7.5);
+        this.ctx.lineTo(545, 0); 
+        this.ctx.stroke();
+        this.ctx.closePath();
+    
+        this.ctx.beginPath();
+        this.ctx.strokeStyle = 'orange';
+        this.ctx.lineWidth = 15;
+        this.ctx.setLineDash([30, 0]);
+        this.ctx.moveTo(405, this.frames %= this.height * 5);
+        this.ctx.lineTo(405, this.height); 
+        this.ctx.moveTo(405, this.frames %= this.height * 5);
+        this.ctx.lineTo(405, 0); 
+        this.ctx.moveTo(375, this.frames %= this.height * 5);
+        this.ctx.lineTo(375, this.height); 
+        this.ctx.moveTo(375, this.frames %= this.height * 5);
+        this.ctx.lineTo(375, 0);
+        this.ctx.stroke()
+        this.ctx.closePath()
+        };
+    
+    updateLineSpeed(){
+    
+    }
 
     // updateCopstacles() {
     //     // console.log('updateObstacles is working')
@@ -120,22 +179,13 @@ class Game {
         this.ctx.fillStyle = 'gray';
         this.ctx.fillText(`Score: ${points}`, 850, 50);
     };
-
-     draw(){
-        ctx.beginPath();
-        ctx.fillStyle = 'black';
-        ctx.fillRect(350, 0, 650, 1400)
-        // ctx.clearRect(45, 45, 60, 60)
-        // ctx.strokeRect(50, 50, 50, 50)
-        ctx.closePath();
-        }
         
     updateGameArea = () => {
        // console.log('updateGameArea is working')
         this.clear();
         this.draw();
         this.updateObstacles();
-        // this.updateCopstacles();
+        //this.updateCopstacles();
         this.player.newPosition();
         this.player.drawChar();
         this.checkGameOver();

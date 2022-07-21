@@ -7,7 +7,7 @@ const ctx = canvas.getContext('2d');
 const cWidth = canvas.width;
 const cHeight = canvas.height;
 
-const player = new Component(75, 125, 'yellow', 650, 645, ctx);
+const player = new Component(75, 125, 'red', 650, 645, ctx,'../docs/assets/images/playerg35.png' );
 
 let game;
 
@@ -59,7 +59,7 @@ let game;
     //     player.speedY -= 1
     // } else if (player.speedY < 0){
     //     player.speedY += 1
-    } else ((player.speedX === 0)(player.speedY === 0)); 
+    } //else ((player.speedX = 0)(player.speedY = 0)); 
      player.speedX = 0;
     //player.speedY = 0;
 }); 
