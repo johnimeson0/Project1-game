@@ -25,25 +25,31 @@ let game;
 
    document.addEventListener('keydown', (e) => {
     console.log('eventListener keydown is working')
+    if(["ArrowUp","ArrowDown"].indexOf(e.code) > -1) {
+        e.preventDefault()
+    }
     switch(e.code){
         case 'ArrowUp':
             console.log(e.code)
             player.speedY -= 1;
-            break;
+        break;
         case 'ArrowDown':
             console.log(e.code)
-
+            
             player.speedY += 1;
             break;
-        case 'ArrowLeft':
+            case 'ArrowLeft':
+                if (!(player.x < 400)){
+                    
+                    console.log(e.code)
+                    player.speedX-= 5;
+                } else player.speedX *= 0
+                break;
+                case 'ArrowRight':
+            if (!(player.x > 800 )){
             console.log(e.code)
-
-            player.speedX-= 5;
-            break;
-        case 'ArrowRight':
-            console.log(e.code)
-
             player.speedX += 5;
+            } else player.speedX *= 0
             break;
     }
 });  

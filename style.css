@@ -8,3 +8,7 @@ background: linear-gradient(to bottom, #859398, #283048); /* W3C, IE 10+/ Edge, 
 #start {
     margin-left: 650px;
 }
+
+ /* button {
+    visibility: hidden;
+}  */

@@ -67,15 +67,15 @@ class Game {
             // let maxGap = 600;
             
             // let gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap); 
-            let possible = [425, 575, 725, 850]
+            let possible = [425, 575, 725, 875]
 
-            this.obstacles.push(new Component(75, height, 'purple', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, './docs/assets/images/player1crop.png'));
+            this.obstacles.push(new Component(75, height, 'purple', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, './docs/assets/images/purplecar.png'));
 
             this.obstacles.push(new Component(75, height, 'red', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, './docs/assets/images/player1crop.png'));
 
             /* this.obstacles.push(new Component(75, height, 'aquamarine', 800, 0, this.ctx)); */
 
-            this.obstacles.push(new Component(75, height, 'aquamarine', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, './docs/assets/images/player1crop.png'));
+            this.obstacles.push(new Component(75, height, 'aquamarine', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, './docs/assets/images/bluecar.png'));
 
         }
         for (let i = 0; i < this.copstacles.length; i++){
@@ -87,7 +87,7 @@ class Game {
     
         this.copstacles.push(new Component(75, 125, 'red', 575, 800, this.ctx, './docs/assets/images/police-car.png' ));
         this.copstacles.push(new Component(75, 125, 'blue', 725, 800, this.ctx, './docs/assets/images/police-car.png'));
-        this.copstacles.push(new Component(75, 125, 'red', 850, 800, this.ctx, './docs/assets/images/police-car.png'));
+        this.copstacles.push(new Component(75, 125, 'red', 875, 800, this.ctx, './docs/assets/images/police-car.png'));
         this.copstacles.push(new Component(75, 125, 'blue', 425, 800, this.ctx, './docs/assets/images/police-car.png'));
        }
     //     for (let i = 0; i < this.winningObstacle.length; i++){
