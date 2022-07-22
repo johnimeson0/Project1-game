@@ -77,7 +77,6 @@ class Game {
 
             this.obstacles.push(new Component(75, height, 'aquamarine', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, '../docs/assets/images/player1crop.png'));
 
-
         }
         for (let i = 0; i < this.copstacles.length; i++){
            console.log('updateObstacles is working');
@@ -86,10 +85,10 @@ class Game {
         }
         if(this.frames % 3600 === 0){
     
-        this.copstacles.push(new Component(75, 125, 'red', 550, 800, this.ctx, '../docs/assets/images/player1crop.png' ));
-        this.copstacles.push(new Component(75, 125, 'blue', 700, 800, this.ctx, '../docs/assets/images/player1crop.png'));
-        this.copstacles.push(new Component(75, 125, 'red', 850, 800, this.ctx, '../docs/assets/images/player1crop.png'));
-        this.copstacles.push(new Component(75, 125, 'blue', 400, 800, this.ctx, '../docs/assets/images/player1crop.png'));
+        this.copstacles.push(new Component(75, 125, 'red', 575, 800, this.ctx, '../docs/assets/images/police-car.png' ));
+        this.copstacles.push(new Component(75, 125, 'blue', 725, 800, this.ctx, '../docs/assets/images/police-car.png'));
+        this.copstacles.push(new Component(75, 125, 'red', 850, 800, this.ctx, '../docs/assets/images/police-car.png'));
+        this.copstacles.push(new Component(75, 125, 'blue', 425, 800, this.ctx, '../docs/assets/images/police-car.png'));
        }
     //     for (let i = 0; i < this.winningObstacle.length; i++){
     //        console.log('winningObstacle is working');
@@ -157,11 +156,22 @@ class Game {
 
     checkGameOver = () => {
        // console.log('checkGameOver is working')
-        const crashed = this.obstacles.some((obstacle, copstacle) => {
-            return this.player.crashWith((obstacle) || (copstacle))      //some accepts the function and checks if anything inside the array fulfills condition
+        const crashed = this.obstacles.some((obstacle) => {
+            return this.player.crashWith(obstacle)      //some accepts the function and checks if anything inside the array fulfills condition
         });  
+        
+        const arrested = this.copstacles.some((copstacle) =>{
+            return this.player.arrested(copstacle)
+        });
 
         if(crashed) {
+            this.stop()
+            this.ctx.font = '50px comic-sans'
+            this.ctx.fillStyle = `${this.player.color}`
+            this.ctx.fillText('Damn you suck lol', this.player.x, this.player.y)
+        }
+
+        if(arrested) {
             this.stop()
             this.ctx.font = '50px comic-sans'
             this.ctx.fillStyle = `${this.player.color}`
@@ -177,7 +187,9 @@ class Game {
         this.ctx.fillStyle = 'gray';
         this.ctx.fillText(`Score: ${points}`, 850, 50);
     };
-        
+
+
+
     updateGameArea = () => {
        // console.log('updateGameArea is working')
         this.clear();
