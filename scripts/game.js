@@ -83,7 +83,7 @@ class Game {
             this.copstacles[i].y -= 1;
             this.copstacles[i].drawChar();
         }
-        if(this.frames % 3600 === 0){
+        if(this.frames % 1800 === 0){
     
         this.copstacles.push(new Component(75, 125, 'red', 575, 800, this.ctx, './docs/assets/images/police-car.png' ));
         this.copstacles.push(new Component(75, 125, 'blue', 725, 800, this.ctx, './docs/assets/images/police-car.png'));
@@ -156,15 +156,19 @@ class Game {
 
     checkGameOver = () => {
        // console.log('checkGameOver is working')
-        const crashed = this.obstacles.some((obstacle, copstacle) => {
-            return this.player.crashWith((obstacle) || (copstacle))     //some accepts the function and checks if anything inside the array fulfills condition
+        const crashed = this.obstacles.some((obstacle) => {
+            return this.player.crashWith(obstacle)     //some accepts the function and checks if anything inside the array fulfills condition
         });  
+
+        const crashedCop = this.copstacles.some((cop) => {
+            return this.player.crashWith(cop)
+        })
         
         // const arrested = this.copstacles.some((copstacle) =>{
         //     return this.player.arrested(copstacle)
         // });
 
-        if(crashed) {
+        if(crashed || crashedCop) {
             this.stop()
             this.ctx.font = '50px comic-sans'
             this.ctx.fillStyle = `${this.player.color}`
