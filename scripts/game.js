@@ -168,11 +168,18 @@ class Game {
         //     return this.player.arrested(copstacle)
         // });
 
-        if(crashed || crashedCop) {
+        if(crashed) {
             this.stop()
             this.ctx.font = '50px comic-sans'
             this.ctx.fillStyle = `${this.player.color}`
-            this.ctx.fillText(`Insurance isn't gonna like this one`, this.player.x, this.player.y)
+            this.ctx.fillText(`Your insurance isn't gonna like this one`, 650, this.player.y)
+        }
+
+        if(crashedCop) {
+            this.stop()
+            this.ctx.font = '50px comic-sans'
+            this.ctx.fillStyle = `${this.player.color}`
+            this.ctx.fillText(`Your lawyer isn't gonna like this one`, 650, this.player.y)
         }
 
         // if(arrested) {
