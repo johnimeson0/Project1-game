@@ -69,13 +69,13 @@ class Game {
             // let gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap); 
             let possible = [425, 575, 725, 850]
 
-            this.obstacles.push(new Component(75, height, 'purple', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, '../docs/assets/images/player1crop.png'));
+            this.obstacles.push(new Component(75, height, 'purple', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, './docs/assets/images/player1crop.png'));
 
-            this.obstacles.push(new Component(75, height, 'red', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, '../docs/assets/images/player1crop.png'));
+            this.obstacles.push(new Component(75, height, 'red', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, './docs/assets/images/player1crop.png'));
 
             /* this.obstacles.push(new Component(75, height, 'aquamarine', 800, 0, this.ctx)); */
 
-            this.obstacles.push(new Component(75, height, 'aquamarine', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, '../docs/assets/images/player1crop.png'));
+            this.obstacles.push(new Component(75, height, 'aquamarine', possible[Math.floor(Math.random() * possible.length)], -100, this.ctx, './docs/assets/images/player1crop.png'));
 
         }
         for (let i = 0; i < this.copstacles.length; i++){
@@ -85,10 +85,10 @@ class Game {
         }
         if(this.frames % 3600 === 0){
     
-        this.copstacles.push(new Component(75, 125, 'red', 575, 800, this.ctx, '../docs/assets/images/police-car.png' ));
-        this.copstacles.push(new Component(75, 125, 'blue', 725, 800, this.ctx, '../docs/assets/images/police-car.png'));
-        this.copstacles.push(new Component(75, 125, 'red', 850, 800, this.ctx, '../docs/assets/images/police-car.png'));
-        this.copstacles.push(new Component(75, 125, 'blue', 425, 800, this.ctx, '../docs/assets/images/police-car.png'));
+        this.copstacles.push(new Component(75, 125, 'red', 575, 800, this.ctx, './docs/assets/images/police-car.png' ));
+        this.copstacles.push(new Component(75, 125, 'blue', 725, 800, this.ctx, './docs/assets/images/police-car.png'));
+        this.copstacles.push(new Component(75, 125, 'red', 850, 800, this.ctx, './docs/assets/images/police-car.png'));
+        this.copstacles.push(new Component(75, 125, 'blue', 425, 800, this.ctx, './docs/assets/images/police-car.png'));
        }
     //     for (let i = 0; i < this.winningObstacle.length; i++){
     //        console.log('winningObstacle is working');
@@ -156,27 +156,27 @@ class Game {
 
     checkGameOver = () => {
        // console.log('checkGameOver is working')
-        const crashed = this.obstacles.some((obstacle) => {
-            return this.player.crashWith(obstacle)      //some accepts the function and checks if anything inside the array fulfills condition
+        const crashed = this.obstacles.some((obstacle, copstacle) => {
+            return this.player.crashWith((obstacle) || (copstacle))     //some accepts the function and checks if anything inside the array fulfills condition
         });  
         
-        const arrested = this.copstacles.some((copstacle) =>{
-            return this.player.arrested(copstacle)
-        });
+        // const arrested = this.copstacles.some((copstacle) =>{
+        //     return this.player.arrested(copstacle)
+        // });
 
         if(crashed) {
             this.stop()
             this.ctx.font = '50px comic-sans'
             this.ctx.fillStyle = `${this.player.color}`
-            this.ctx.fillText('Damn you suck lol', this.player.x, this.player.y)
+            this.ctx.fillText(`Insurance isn't gonna like this one`, this.player.x, this.player.y)
         }
 
-        if(arrested) {
-            this.stop()
-            this.ctx.font = '50px comic-sans'
-            this.ctx.fillStyle = `${this.player.color}`
-            this.ctx.fillText('Damn you suck lol', this.player.x, this.player.y)
-        }
+        // if(arrested) {
+        //     this.stop()
+        //     this.ctx.font = '50px comic-sans'
+        //     this.ctx.fillStyle = `${this.player.color}`
+        //     this.ctx.fillText('Damn you suck lol', this.player.x, this.player.y)
+        // }
 
     };
 

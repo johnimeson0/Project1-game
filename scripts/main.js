@@ -7,7 +7,7 @@ const ctx = canvas.getContext('2d');
 const cWidth = canvas.width;
 const cHeight = canvas.height;
 
-const player = new Component(75, 125, 'red', 650, 645, ctx,'../docs/assets/images/playerg35.png' );
+const player = new Component(75, 125, 'red', 650, 645, ctx,'./docs/assets/images/playerg35.png' );
 
 let game;
 
