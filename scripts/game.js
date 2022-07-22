@@ -172,14 +172,14 @@ class Game {
             this.stop()
             this.ctx.font = '50px comic-sans'
             this.ctx.fillStyle = `${this.player.color}`
-            this.ctx.fillText(`Your insurance isn't gonna like this one`, 650, this.player.y)
+            this.ctx.fillText(`Your insurance isn't gonna like this one`, 450, this.player.y)
         }
 
         if(crashedCop) {
             this.stop()
             this.ctx.font = '50px comic-sans'
             this.ctx.fillStyle = `${this.player.color}`
-            this.ctx.fillText(`Your lawyer isn't gonna like this one`, 650, this.player.y)
+            this.ctx.fillText(`Your lawyer isn't gonna like this one`, 450, this.player.y)
         }
 
         // if(arrested) {
